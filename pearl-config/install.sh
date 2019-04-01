@@ -8,12 +8,13 @@ function post_install(){
     pearl emerge ${PEARL_PKGREPONAME}/nerdcommenter
     pearl emerge ${PEARL_PKGREPONAME}/nerdtree
     pearl emerge ${PEARL_PKGREPONAME}/powerline
-    pearl emerge ${PEARL_PKGREPONAME}/python-mode
+    # Temporarily disabled:
+    #pearl emerge ${PEARL_PKGREPONAME}/python-mode
     pearl emerge ${PEARL_PKGREPONAME}/supertab
     pearl emerge ${PEARL_PKGREPONAME}/syntastic
     pearl emerge ${PEARL_PKGREPONAME}/vim-orgmode
 
-    local theme=$(choose "Do you want to remove all vim related packages?" "None" "solarized" "zenburn" "None")
+    local theme=$(choose "Do you want to install a vim theme?" "None" "solarized" "zenburn" "dracula" "None")
     if [[ $theme != "None" ]]
     then
         pearl emerge ${PEARL_PKGREPONAME}/$theme
@@ -40,7 +41,8 @@ function pre_remove(){
         pearl remove ${PEARL_PKGREPONAME}/nerdcommenter
         pearl remove ${PEARL_PKGREPONAME}/nerdtree
         pearl remove ${PEARL_PKGREPONAME}/powerline
-        pearl remove ${PEARL_PKGREPONAME}/python-mode
+        # Temporarily disabled:
+        #pearl remove ${PEARL_PKGREPONAME}/python-mode
         pearl remove ${PEARL_PKGREPONAME}/supertab
         pearl remove ${PEARL_PKGREPONAME}/syntastic
         pearl remove ${PEARL_PKGREPONAME}/vim-orgmode
