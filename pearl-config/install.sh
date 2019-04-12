@@ -13,12 +13,7 @@ function post_install(){
     pearl emerge ${PEARL_PKGREPONAME}/supertab
     pearl emerge ${PEARL_PKGREPONAME}/syntastic
     pearl emerge ${PEARL_PKGREPONAME}/vim-orgmode
-
-    local theme=$(choose "Do you want to install a vim theme?" "None" "solarized" "zenburn" "dracula" "None")
-    if [[ $theme != "None" ]]
-    then
-        pearl emerge ${PEARL_PKGREPONAME}/$theme
-    fi
+    pearl emerge ${PEARL_PKGREPONAME}/vim-colors
 
     return 0
 }
@@ -46,6 +41,7 @@ function pre_remove(){
         pearl remove ${PEARL_PKGREPONAME}/supertab
         pearl remove ${PEARL_PKGREPONAME}/syntastic
         pearl remove ${PEARL_PKGREPONAME}/vim-orgmode
+        pearl remove ${PEARL_PKGREPONAME}/vim-colors
     fi
     return 0
 }
