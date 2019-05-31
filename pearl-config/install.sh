@@ -12,8 +12,9 @@ function post_install(){
     #pearl emerge ${PEARL_PKGREPONAME}/python-mode
     pearl emerge ${PEARL_PKGREPONAME}/supertab
     pearl emerge ${PEARL_PKGREPONAME}/syntastic
-    pearl emerge ${PEARL_PKGREPONAME}/vim-orgmode
     pearl emerge ${PEARL_PKGREPONAME}/vim-colors
+    pearl emerge ${PEARL_PKGREPONAME}/vim-multiple-cursors
+    pearl emerge ${PEARL_PKGREPONAME}/vim-orgmode
 
     return 0
 }
@@ -40,8 +41,9 @@ function pre_remove(){
         #pearl remove ${PEARL_PKGREPONAME}/python-mode
         pearl remove ${PEARL_PKGREPONAME}/supertab
         pearl remove ${PEARL_PKGREPONAME}/syntastic
-        pearl remove ${PEARL_PKGREPONAME}/vim-orgmode
         pearl remove ${PEARL_PKGREPONAME}/vim-colors
+        pearl remove ${PEARL_PKGREPONAME}/vim-multiple-cursors
+        pearl remove ${PEARL_PKGREPONAME}/vim-orgmode
     fi
     return 0
 }
