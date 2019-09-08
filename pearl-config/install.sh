@@ -1,20 +1,8 @@
+DEPENDS=("${PEARL_PKGREPONAME}/bufexplorer" "${PEARL_PKGREPONAME}/dict" "${PEARL_PKGREPONAME}/dot-vim" "${PEARL_PKGREPONAME}/fugitive" "${PEARL_PKGREPONAME}/gitgutter" "${PEARL_PKGREPONAME}/indentline" "${PEARL_PKGREPONAME}/nerdcommenter" "${PEARL_PKGREPONAME}/nerdtree" "${PEARL_PKGREPONAME}/powerline" "${PEARL_PKGREPONAME}/supertab" "${PEARL_PKGREPONAME}/syntastic" "${PEARL_PKGREPONAME}/vim-colors" "${PEARL_PKGREPONAME}/vim-multiple-cursors" "${PEARL_PKGREPONAME}/vim-orgmode")
+
 function post_install(){
-    pearl emerge ${PEARL_PKGREPONAME}/bufexplorer
-    pearl emerge ${PEARL_PKGREPONAME}/dict
-    pearl emerge ${PEARL_PKGREPONAME}/dot-vim
-    pearl emerge ${PEARL_PKGREPONAME}/fugitive
-    pearl emerge ${PEARL_PKGREPONAME}/gitgutter
-    pearl emerge ${PEARL_PKGREPONAME}/indentline
-    pearl emerge ${PEARL_PKGREPONAME}/nerdcommenter
-    pearl emerge ${PEARL_PKGREPONAME}/nerdtree
-    pearl emerge ${PEARL_PKGREPONAME}/powerline
     # Temporarily disabled:
     #pearl emerge ${PEARL_PKGREPONAME}/python-mode
-    pearl emerge ${PEARL_PKGREPONAME}/supertab
-    pearl emerge ${PEARL_PKGREPONAME}/syntastic
-    pearl emerge ${PEARL_PKGREPONAME}/vim-colors
-    pearl emerge ${PEARL_PKGREPONAME}/vim-multiple-cursors
-    pearl emerge ${PEARL_PKGREPONAME}/vim-orgmode
 
     return 0
 }
@@ -28,22 +16,10 @@ function post_update(){
 function pre_remove(){
     if ask "Do you want to remove all vim related packages?" "N"
     then
-        pearl remove ${PEARL_PKGREPONAME}/bufexplorer
-        pearl remove ${PEARL_PKGREPONAME}/dict
-        pearl remove ${PEARL_PKGREPONAME}/dot-vim
-        pearl remove ${PEARL_PKGREPONAME}/fugitive
-        pearl remove ${PEARL_PKGREPONAME}/gitgutter
-        pearl remove ${PEARL_PKGREPONAME}/indentline
-        pearl remove ${PEARL_PKGREPONAME}/nerdcommenter
-        pearl remove ${PEARL_PKGREPONAME}/nerdtree
-        pearl remove ${PEARL_PKGREPONAME}/powerline
-        # Temporarily disabled:
-        #pearl remove ${PEARL_PKGREPONAME}/python-mode
-        pearl remove ${PEARL_PKGREPONAME}/supertab
-        pearl remove ${PEARL_PKGREPONAME}/syntastic
-        pearl remove ${PEARL_PKGREPONAME}/vim-colors
-        pearl remove ${PEARL_PKGREPONAME}/vim-multiple-cursors
-        pearl remove ${PEARL_PKGREPONAME}/vim-orgmode
+        for dep in ${DEPENDS[@]}
+        do
+            pearl remove ${dep}
+        done
     fi
     return 0
 }
